@@ -1,0 +1,127 @@
+:root{
+      /* DETRA brand */
+      --green:#00b36b;
+      --blue:#0077ff;
+      --dark:#2b2d33;
+      --text:#2d2f36;
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --bg-soft:#f6f8fb;
+      --border:#e5e7eb;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --grad:linear-gradient(135deg,var(--green),var(--blue));
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:"Fira GO","Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,"Noto Sans";
+    }
+    a{color:inherit}
+
+    /* Container */
+    .container{
+        max-width:1200px;
+        margin:0 auto;
+        padding:0 20px
+    }
+
+    /* Header (from your nav structure, styled) */
+    header{
+        position:sticky;
+        
+    }
+
+    /* Hero */
+    .hero{background:var(--bg-soft);border-bottom:1px solid var(--border)}
+    .hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;min-height:280px;padding:28px 0}
+    .crumbs{font-size:14px;color:var(--muted)}
+    .title{font-size:clamp(26px,4vw,40px);margin:8px 0 10px;color:var(--dark)}
+    .subtitle{color:var(--muted);max-width:680px;margin:0}
+    .hero-card{
+        background:#fff;
+        border:1px solid var(--border);
+        border-radius:var(--radius);
+        box-shadow:var(--shadow);
+        padding:16px;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .hero-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+    .kpi{background:#fff;border:1px dashed #dbe3ef;border-radius:14px;padding:12px;text-align:center}
+    .kpi b{font-size:22px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:block}
+    .kpi span{font-size:12px;color:var(--muted)}
+
+    /* About rows (alternating image/text) */
+    section{
+        padding:clamp(10px,4vw,88px) 0
+    }
+    .about-row{
+        display:grid;
+        grid-template-columns:1.1fr 1fr;
+        align-items:center;
+    }
+    .about-row.reverse{grid-template-columns:1fr 1.1fr}
+    .about-media{
+        border-radius:var(--radius);
+        overflow:hidden;
+        border:1px solid var(--border);
+        box-shadow:var(--shadow);
+        width: 80%;
+    }
+    .about-media img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block
+    }
+    .about-text h2{
+        margin:0 0 10px;
+        color:var(--dark);
+        font-size:clamp(22px,3vw,30px)
+    }
+    .about-text p{
+        margin:0 0 5px;
+        color:var(--text);
+        line-height:1.4
+    }
+    .list{
+        display:grid;
+        gap:8px;
+        margin-top:10px
+    }
+    .list li{list-style:none;display:flex;gap:10px;align-items:flex-start}
+    .dot{width:10px;height:10px;border-radius:999px;background:var(--grad);margin-top:8px;flex:0 0 10px}
+
+    /* Values grid */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+    .card h3{margin:0 0 6px;color:var(--dark)}
+    .card p{margin:0;color:var(--muted)}
+
+    /* Process steps */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+    .step{background:#fff;border:1px solid var(--border);border-radius:16px;padding:16px;text-align:center}
+    .step b{display:inline-block;background:var(--grad);color:#fff;border-radius:999px;padding:6px 10px;margin-bottom:8px}
+
+    /* CTA band */
+    .cta-band{background:var(--grad);color:#fff;border-radius:var(--radius);padding:18px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .cta{background:#fff;color:#000;border:0;border-radius:999px;padding:12px 18px;font-weight:700;text-decoration:none}
+
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero .wrap{grid-template-columns:1fr}
+      .about-row,.about-row.reverse{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .footer-services{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .nav-menu{display:none}
+      .mobile-menu-btn{display:block}
+      .grid-3{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .footer-services{grid-template-columns:1fr}
+    }
