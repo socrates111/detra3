@@ -28,10 +28,14 @@
     }
 
     /* Header (from your nav structure, styled) */
-    header{
-        position:sticky;
-        
+    header {
+        position: sticky; top: 0; z-index: 50;
+        background: rgba(255,255,255,.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--border);
     }
+
+    
 
     /* Hero */
     .hero{background:var(--bg-soft);border-bottom:1px solid var(--border)}
@@ -52,6 +56,14 @@
     .kpi{background:#fff;border:1px dashed #dbe3ef;border-radius:14px;padding:12px;text-align:center}
     .kpi b{font-size:22px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:block}
     .kpi span{font-size:12px;color:var(--muted)}
+
+    .heroo {
+        /* background: var(--bg-soft); */
+        border-bottom: 2px solid var(--border);
+        /* background-image: var(--grad-soft); */
+        background-attachment: fixed;
+        text-align: center;
+    }
 
     /* About rows (alternating image/text) */
     section{

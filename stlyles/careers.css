@@ -1,7 +1,7 @@
 :root {
       /* Same palette as your green-focused About page */
       --green-light: #8be361;
-      --green-mid:   #48c86f;
+      --green-mid:   #61A3BA;
       --green-dark:  #00a96f;
       --dark:        #1f1f25;
       --text:        #2b2d33;
@@ -37,7 +37,12 @@
     .nav-menu { list-style: none; display: flex; gap: 24px; align-items: center; }
     .nav-link { font-weight: 600; display: flex; align-items: center; gap: 6px; color: var(--dark); }
     .nav-link:hover { color: var(--green-dark); }
-    .mobile-menu-btn { display: none; border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; }
+    .mobile-menu-btn { 
+      display: none; 
+      border: 1px solid var(--border); 
+      border-radius: 8px; 
+      padding: 6px 10px; 
+    }
 
     /* Hero */
     .hero {
@@ -91,8 +96,19 @@
       border-radius: var(--radius); padding:18px; box-shadow: var(--shadow);
       display:flex; flex-direction:column; gap:10px;
     }
-    .job .tag { display:inline-block; font-size:12px; font-weight:700; color:#fff; background: var(--grad-strong); padding:6px 10px; border-radius:999px; }
-    .job h3 { color: var(--dark); margin: 2px 0 0; }
+    .job .tag { 
+      display:inline-block; 
+      font-size:12px; 
+      font-weight:700; 
+      color:#fff; 
+      background: var(--grad-strong); 
+      padding:6px 10px; 
+      border-radius:999px; 
+    }
+    .job h3 { 
+      color: var(--dark); 
+      margin: 2px 0 0; 
+    }
     .meta { font-size: 14px; color: var(--muted); }
     .job ul { margin-left: 16px; }
     .job .actions { margin-top:auto; display:flex; gap:10px; flex-wrap:wrap; }
@@ -103,7 +119,7 @@
       border-radius:12px;
       border:2px solid var(--green-light); 
       background:#fff; 
-      background-color: #33b1d0;
+      background-color: #61A3BA;
     }
     .btn:hover {
         color:#fff; 

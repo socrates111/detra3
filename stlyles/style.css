@@ -6,13 +6,13 @@
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: "Fira GO", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
             line-height: 1.6;
             color: #333;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
+            font-family: "Fira GO", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
             font-weight: 600;
             line-height: 1.2;
         }
@@ -42,7 +42,8 @@
         } 
         .btn-teal { 
             background-color: #33b1d0; 
-            color: white; 
+            color: white;
+            margin-top: 20px;
         } 
         .btn-teal:hover { 
             background-color: #2a9bb8; 
@@ -172,7 +173,7 @@
         /* Hero Section */
         .hero {
             position: relative;
-            height: 100vh; /* Full screen height */
+            height: 80vh; /* Full screen height */
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -208,7 +209,7 @@
 
         /* Secondary CTA */
         .secondary-cta {
-            background-color: #8cc542; /* warm light green */
+            background-color: #f8f9fb;
             padding: 60px 1px;
             text-align: left;
             box-shadow: 0 4px 12px rgba(0, 100, 0, 0.1);
@@ -306,7 +307,7 @@
 
         /* Financing Section */
         .comfort-banner {
-            background-color: #8cc542;
+            background-color: #f8f9fb;
             padding: 80px 0;
             
         }
@@ -324,14 +325,14 @@
         }
 
         .comfort-image img {
-            width: 192px;
-            height: 192px;
-            object-fit: contain;
+            max-width: 450px;
+            max-height: 450px;
+            object-fit: fill;
         }
 
         .comfort-text {
             flex: 2;
-            color: white;
+            color: black;
         }
 
         .comfort-title {
@@ -448,14 +449,35 @@
         /* partner div */
         
         
-        .parent {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columns */
-            gap: 16px;
-            justify-items: center; /* centers each grid item */
-            align-items: center;
-            padding: 20px;
-        }
+     .parent {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 columns */
+        gap: 16px;
+        justify-items: center;
+        align-items: center;
+        padding: 20px;
+        opacity: 0;                   /* start hidden */
+        transform: translateY(60px);  /* start slightly below */
+        transition: all 0.8s ease-out;
+    }
+
+/* when visible */
+    .parent.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+/* child logos (optional subtle fade-in) */
+    .part_divs {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease-out;
+    }
+
+    .parent.is-visible .part_divs {
+    opacity: 1;
+    transform: translateY(0);
+    }
 
         .part_divs {
             width: 140px;
@@ -603,6 +625,49 @@
             max-height: 100px;
             object-fit: contain;
         }
+
+        /* contractors animation */
+            
+                    .contractors {
+        perspective: 1000px;           /* key for the 3D pop */
+        opacity: 0;                    /* start hidden */
+        transform: translateZ(-1400px);/* matches keyframe start, for graceful reset */
+        }
+
+        /* When visible, run the Animista keyframes */
+        .contractors.is-visible {
+        animation: slide-in-fwd-center 0.8s cubic-bezier(0.25,0.46,0.45,0.94) both;
+        }
+
+        /* Optional: stagger the two rows slightly for a nicer feel */
+        .contractor-row { opacity: 0; transform: translateZ(-200px); }
+        .contractors.is-visible .contractor-row { 
+        animation: slide-in-fwd-center 0.6s cubic-bezier(0.25,0.46,0.45,0.94) both;
+        }
+        .contractors.is-visible .contractor-row:nth-child(1) { animation-delay: 0.1s; }
+        .contractors.is-visible .contractor-row:nth-child(2) { animation-delay: 0.25s; }
+
+        /* Your existing Animista keyframes (kept as-is) */
+        @-webkit-keyframes slide-in-fwd-center {
+        0% { -webkit-transform: translateZ(-1400px); transform: translateZ(-1400px); opacity: 0; }
+        100%{ -webkit-transform: translateZ(0);      transform: translateZ(0);      opacity: 1; }
+        }
+        @keyframes slide-in-fwd-center {
+        0% { transform: translateZ(-1400px); opacity: 0; }
+        100%{ transform: translateZ(0);      opacity: 1; }
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+        .contractors,
+        .contractor-row {
+            animation: none !important;
+            transition: none !important;
+            transform: none !important;
+            opacity: 1 !important;
+        }
+        }
+
 
         /* Contact Form */
         .contact {
@@ -967,3 +1032,85 @@
         }
 
  
+
+
+
+
+
+        /* test */
+
+       .company-section {
+      background: #f8f9fb;
+      padding: 120px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .company-wrapper {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .company-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+      opacity: 1;
+      transform: none;
+      transition: all 0.8s ease-out;
+    }
+
+    /* Hidden initially when JS is enabled */
+    .js .company-grid {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+
+    .js .company-grid.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== Image ===== */
+    .company-image img {
+      width: 55%;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ===== Content ===== */
+    .company-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .company-title {
+      font-size: clamp(1.8rem, 1.2rem + 1.2vw, 2.6rem);
+      color: #1c2636;
+      margin: 0 0 16px;
+    }
+
+    .company-text {
+      color: #555;
+      line-height: 1.6;
+      margin: 0 0 24px;
+    }
+
+    /* ===== Button ===== */
+    .company-btn {
+      display: inline-block;
+      background: #33b1d0;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      width: fit-content;
+    }
+
+    .company-btn:hover {
+      background: #2a9bb8;
+    }

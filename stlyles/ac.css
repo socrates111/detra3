@@ -1,4 +1,4 @@
-/* ===== AC Services (2 cards per row) ===== */
+/* ===== AC Services (responsive 1/2/3 columns) ===== */
 :root{
   --navy: #1c2636;
   --teal: #33b1d0;
@@ -9,20 +9,22 @@
   --shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-.ac-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.service-card{
-  max-width: 600px;
-}
-
 .ac-services{
   padding: 64px 0 80px;
   background: #fafafa;
+}
+
+.ac-container{
+  /* keep vertical stacking for title/subtitle */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* center content and give breathing room */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 .ac-title{
@@ -30,10 +32,6 @@
   color: var(--navy);
   margin: 0 0 8px;
   text-align: center;
-}
-
-.test {
-  width: 50px;
 }
 
 .ac-subtitle{
@@ -46,19 +44,37 @@
 
 .services-grid{
   display: grid;
-  grid-template-columns: 1fr;           /* 1 card on mobile */
   gap: 24px;
   margin-top: 30px;
+
+  /* Mobile first: 1 column */
+  grid-template-columns: 1fr;
 }
 
-/* 2 cards per row from 680px and up */
+/* ≥680px: 2 columns */
 @media (min-width: 680px){
   .services-grid{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+/* ≥1024px: 3 columns */
+@media (min-width: 1024px){
+  .services-grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* (Optional) ≥1440px: 4 columns
+@media (min-width: 1440px){
+  .services-grid{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+*/
+
 .service-card{
+  max-width: none;
   background: var(--card);
   border: 1px solid var(--border);
   padding: 12px;
@@ -77,7 +93,8 @@
 }
 
 .service-media{
-  /* aspect-ratio: 16 / 10; */
+  /* keep thumbnails uniform */
+  aspect-ratio: 16 / 10;
   background: #e9eef3;
   overflow: hidden;
 }

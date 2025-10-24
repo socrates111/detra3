@@ -1,209 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Project Management Card</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us Section</title>
+
+  <!-- If JS is available, add a "js" class to <html> -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <style>
+    /* ===== Base Layout ===== */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f8f9fb;
+    }
+
+    /* ===== About Section ===== */
+    .about {
+      background: #f8f9fb;
+      padding: 80px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about .container {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .about-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+      opacity: 1; /* visible by default (no-JS fallback) */
+      transform: none;
+      transition: all 0.8s ease-out;
+    }
+
+    /* When JS is on, start hidden */
+    .js .about-container {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+
+    .js .about-container.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== Image ===== */
+    .about-img img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ===== Text Content ===== */
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-title {
+      font-size: clamp(1.8rem, 1.2rem + 1.2vw, 2.6rem);
+      color: #1c2636;
+      margin: 0 0 16px;
+    }
+
+    .about-text {
+      color: #555;
+      line-height: 1.6;
+      margin: 0 0 24px;
+    }
+
+    /* ===== Button ===== */
+    .about-btn {
+      display: inline-block;
+      background: #33b1d0;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      width: fit-content;
+    }
+
+    .about-btn:hover {
+      background: #2a9bb8;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .about-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .about-content {
+        align-items: center;
+      }
+
+      .about-btn {
+        margin: 0 auto;
+      }
+    }
+
+    /* Accessibility (no motion) */
+    @media (prefers-reduced-motion: reduce) {
+      .about-container,
+      .about-container.is-visible {
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+  </style>
 </head>
-<style>
-
-  /* ===== Design tokens ===== */
-:root {
-  --bg: #f6f7f8;
-  --surface: #ffffff;
-  --text: #111827;          /* slate-900 */
-  --muted: #6b7280;         /* slate-500 */
-  --border: #e5e7eb;        /* gray-200 */
-  --primary: #137fec;       /* brand blue */
-  --primary-hover: #0e6fcc;
-  --success-bg: #dcfce7;    /* green-100 */
-  --success-text: #166534;  /* green-800 */
-  --shadow: 0 10px 36px rgba(0,0,0,.08);
-  --radius: 16px;
-  --radius-sm: 10px;
-  --progress-track: #e5e7eb;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #101922;
-    --surface: #0f172a;      /* slate-900 */
-    --text: #f8fafc;         /* slate-50 */
-    --muted: #9ca3af;        /* slate-400 */
-    --border: #1f2937;       /* gray-800 */
-    --success-bg: #052e16;   /* green-950 */
-    --success-text: #86efac; /* green-300 */
-    --progress-track: #334155; /* slate-700 */
-    --shadow: 0 14px 40px rgba(0,0,0,.35);
-  }
-}
-
-/* ===== Base ===== */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-body {
-  margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.5;
-}
-
-/* ===== Layout ===== */
-.wrap {
-  min-height: 100%;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-}
-
-/* ===== Card ===== */
-.card {
-  width: min(680px, 92vw);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: clip;
-}
-
-.card__header {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 24px 24px 8px;
-}
-
-.card__titleblock { max-width: 100%; }
-.card__title {
-  margin: 0 0 4px;
-  font-size: clamp(18px, 2vw + 12px, 22px);
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-.card__subtitle {
-  margin: 0;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-.pill--success {
-  background: var(--success-bg);
-  color: var(--success-text);
-}
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: currentColor;
-  opacity: .85;
-}
-
-.card__summary {
-  padding: 8px 24px 0;
-  font-size: 14.5px;
-  color: var(--text);
-}
-
-/* ===== Progress ===== */
-.progress { padding: 16px 24px 0; }
-.progress__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-bottom: 8px;
-  color: var(--text);
-}
-.progress__track {
-  width: 100%;
-  height: 8px;
-  background: var(--progress-track);
-  border-radius: 999px;
-  overflow: hidden;
-}
-.progress__bar {
-  height: 100%;
-  width: var(--value, 0%);
-  background: linear-gradient(90deg, var(--primary), var(--primary));
-  border-radius: inherit;
-  transition: width .35s ease-in-out;
-}
-
-/* ===== Footer / Button ===== */
-.card__footer {
-  padding: 20px 24px 24px;
-  background: color-mix(in srgb, var(--bg) 65%, transparent);
-}
-.btn {
-  display: inline-block;
-  width: 100%;
-  padding: 12px 16px;
-  border: 0;
-  border-radius: var(--radius-sm);
-  background: var(--primary);
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  transition: transform .08s ease, background .15s ease;
-}
-.btn:hover { background: var(--primary-hover); }
-.btn:active { transform: translateY(1px); }
-.btn:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--primary) 35%, transparent);
-  outline-offset: 2px;
-}
-
-</style>
 <body>
-  <main class="wrap">
-    <article class="card">
-      <header class="card__header">
-        <div class="card__titleblock">
-          <h2 class="card__title">Renovation of the Smith Residence</h2>
-          <p class="card__subtitle">123 Oak Street, Anytown, USA</p>
-        </div>
 
-        <div class="pill pill--success">
-          <span class="dot"></span>
-          <span>Done</span>
+  <!-- ===== About Us Section ===== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-container">
+        <div class="about-img">
+          <!-- Replace with your image -->
+          <img src="IMG/about-us.jpg" alt="About our company">
         </div>
-      </header>
-
-      <p class="card__summary">
-        A concise summary of the work completed on this project. This provides a quick overview for stakeholders to understand the current progress and status.
-      </p>
-
-      <section class="progress">
-        <div class="progress__row">
-          <span>Work Completed</span>
-          <strong>100%</strong>
+        <div class="about-content">
+          <h2 class="about-title">ჩვენს შესახებ</h2>
+          <p class="about-text">
+            კომპანია Detra მრავალი წელია წარმატებით საქმიანობს გათბობის, გაგრილების და ვენტილაციის 
+            სისტემების მონტაჟსა და სერვისში.  
+            ჩვენ გვყავს გამოცდილი პროფესიონალთა გუნდი, რომელიც უზრუნველყოფს 
+            მაღალი ხარისხის მომსახურებას თითოეული კლიენტისთვის.
+          </p>
+          <a href="about.html" class="about-btn">Learn More</a>
         </div>
-        <div class="progress__track" aria-hidden="true">
-          <div class="progress__bar" style="--value: 100%"></div>
-        </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <footer class="card__footer">
-        <button class="btn">View Project Details</button>
-      </footer>
-    </article>
-  </main>
+  <!-- ===== Scroll Animation ===== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const about = document.querySelector('.about-container');
+      if (!about) return;
+
+      // Fallback for old browsers
+      if (!('IntersectionObserver' in window)) {
+        about.classList.add('is-visible');
+        return;
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            about.classList.add('is-visible');
+          } else {
+            about.classList.remove('is-visible'); // re-trigger when scrolling back
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(about);
+    });
+  </script>
+
 </body>
 </html>
