@@ -69,7 +69,7 @@
         top: 0;
         z-index: 1000;
         /* translucent + blur */
-        background: rgba(255,255,255,0.72);
+        background: rgba(236, 236, 236, 0.72);
         -webkit-backdrop-filter: saturate(160%) blur(10px);
         backdrop-filter: saturate(160%) blur(10px);
         border-bottom: 1px solid var(--border);
@@ -263,6 +263,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 32px;
+            margin-top: 25px;
         }
 
         .service-item {
@@ -307,47 +308,82 @@
 
         /* Financing Section */
         .comfort-banner {
-            background-color: #f8f9fb;
-            padding: 80px 0;
-            
+            /* background: #f8f9fb; */
+            padding: 120px 20px;
+            display: flex;
+            justify-content: center;
         }
 
         .comfort-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 48px;
+        max-width: 1200px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 48px;
+        opacity: 1;
+        transform: none;
+        transition: all 0.8s ease-out;
         }
 
-        .comfort-image {
-            flex: 1;
-            text-align: center;
+        /* Hidden initially when JS is enabled */
+        .js .comfort-content {
+        opacity: 0;
+        transform: translateY(80px);
         }
 
+        .js .comfort-content.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        }
+
+        /* ===== Image Section ===== */
         .comfort-image img {
-            max-width: 450px;
-            max-height: 450px;
-            object-fit: fill;
+        max-width: 450px;
+        max-height: 450px;
+        object-fit: cover;
+        border-radius: 5px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         }
 
+        /* ===== Text Section ===== */
         .comfort-text {
-            flex: 2;
-            color: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #555;
+        line-height: 1.6;
         }
 
         .comfort-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
+        font-size: clamp(1.8rem, 1.2rem + 1.2vw, 2.6rem);
+        color: #1c2636;
+        font-weight: 700;
+        margin-bottom: 16px;
         }
 
-        .comfort-disclaimer {
-            font-size: 18px;
-            color: #ccc;
-            margin-bottom: 32px;
+        .comfort-description {
+        margin-bottom: 24px;
         }
 
-        /* About Section */
+        /* ===== Optional Button ===== */
+        .comfort-btn {
+        /* display: inline-block; */
+        background: #33b1d0;
+        color: #fff;
+        padding: 12px 28px;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.3s ease;
+        width: fit-content;
+        }
+
+        .comfort-btn:hover {
+        background: #2a9bb8;
+        }
+
+              /* About Section */
         .about, .contractors {
             padding: 80px 0;
             background: white;
@@ -447,8 +483,6 @@
         
 
         /* partner div */
-        
-        
      .parent {
         display: grid;
         grid-template-columns: repeat(4, 1fr); /* 4 columns */
@@ -851,6 +885,16 @@
             font-size: 14px;
         }
 
+        /* sections devider */
+        .section-divider {
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, #2a9bb8, #33b1d0);
+            border-radius: 2px;
+            margin: 100px auto;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-menu {
@@ -939,7 +983,7 @@
         .plumbing-icon { color: #eab308; }
         .financing-icon { color: #1c2636; }
 
-
+        
         /* navigation responsive */
 
         /* Show dropdown on hover (desktop) */
@@ -1032,15 +1076,10 @@
         }
 
  
-
-
-
-
-
         /* test */
 
        .company-section {
-      background: #f8f9fb;
+      /* background: #f8f9fb; */
       padding: 120px 20px;
       display: flex;
       justify-content: center;
@@ -1055,7 +1094,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      gap: 40px;
+      gap: 48px;
       opacity: 1;
       transform: none;
       transition: all 0.8s ease-out;
@@ -1074,8 +1113,9 @@
 
     /* ===== Image ===== */
     .company-image img {
-      width: 55%;
-      border-radius: 16px;
+      max-width: 450px;
+    max-height: 450px;
+      border-radius: 5px;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     }
 
@@ -1114,3 +1154,12 @@
     .company-btn:hover {
       background: #2a9bb8;
     }
+
+
+
+
+
+
+
+
+  
